@@ -32,16 +32,18 @@ TBS when the design has settled dow
 
 Example 1: Append a sequence of elements to a nested vector
 
+```
   (def data {:a [1 2 3]})
 
   ;; Manual Clojure
   (update data :a (fn [v] (reduce conj v [4 5])))
 
   ;; Hydra
-
+```
 
 Example 2: Increment every even number nested within map of vector of maps
 
+```
   (def data {:a [{:aa 1 :bb 2}
                  {:cc 3}]
              :b [{:dd 4}]})
@@ -60,14 +62,16 @@ Example 2: Increment every even number nested within map of vector of maps
         v)))
 
   ;; Hydra
-
+```
 
 Example 3: Reverse the order of even numbers in a tree (with order based on depth first search):
 
+```
 (transform (subselect (walker number?) even?)
   reverse
   [1 [[[2]] 3] 5 [6 [7 8]] 10])
 ;; => [1 [[[10]] 3] 5 [8 [7 6]] 2]
+```
 
 Example 4: Replace every continuous sequence of odd numbers with its sum:
 
